@@ -13,13 +13,13 @@ function help_me() {
 }
 
 function git_clone_or_pull() {
-    remote local OPTIND=1
+    local remote target OPTIND=1
 
     arg_len=$#
 
     dirbak="$(pwd)"
     remote="$1"
-    local="$2"
+    target="$2"
 
     if [[ $arg_len -lt 2 ]]; then
 	      echo "Not enough arguments passed"
@@ -27,7 +27,7 @@ function git_clone_or_pull() {
 	      return
     fi
 
-    git clone "$remote" "$local" || cd "$local" && git pull
+    git clone "$remote" "$target" || cd "$target" && git pull
     cd "$dirbak"
 }
 
