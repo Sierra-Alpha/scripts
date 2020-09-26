@@ -17,9 +17,9 @@ function git_clone_or_pull() {
 
     arg_len=$#
 
-    dirbak=$(pwd)
-    remote=$1
-    local=$2
+    dirbak="$(pwd)"
+    remote="$1"
+    local="$2"
 
     if [[ $arg_len -lt 2 ]]; then
 	      echo "Not enough arguments passed"
