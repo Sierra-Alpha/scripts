@@ -27,7 +27,10 @@ function git_clone_or_pull() {
 	      return
     fi
 
-    git clone "$remote" "$target" || cd "$target" && git pull
+    echo trying git clone, falling back to pull
+    git clone "$remote" "$target" \
+        || (echo clone failed, trying pull \
+                && cd "$target" && git pull)
     cd "$dirbak"
 }
 
