@@ -28,9 +28,9 @@ function git_clone_or_pull() {
     fi
 
     echo trying git clone, falling back to pull
-    git clone "$remote" "$target" \
+    git clone --recurse-submodules "$remote" "$target" \
         || (echo clone failed, trying pull \
-                && cd "$target" && git pull)
+                && cd "$target" && git pull --recurse-submodules)
     cd "$dirbak"
 }
 
