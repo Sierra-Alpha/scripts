@@ -31,7 +31,7 @@ function git_clone_or_pull() {
     git clone --recurse-submodules "$remote" "$target" \
         || (echo clone failed, trying pull \
                 && cd "$target" && git pull --recurse-submodules \
-                && gti submodule foreach --recursive git checkout master \
+                && git submodule foreach --recursive git checkout master \
                 && git submodule foreach --recursive git pull origin master)
     cd "$dirbak"
 }
